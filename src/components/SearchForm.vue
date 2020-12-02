@@ -47,17 +47,17 @@
   </div>
   <div class="minus">
     <div class="row2">
-      <div v-if="needed2" class="col-12 under row">
+      <div class="col-12 main under" v-if="needed2">
         <div
-          class="myCol col-md-6 myGrid"
+          class="figure contain"
           v-for="(imge, index) in Images"
           :key="index"
           @click="selectImage(index)"
           :index="i"
-          :style="{ backgroundImage: `url(${imge.urls.small})` }"
         >
-          <div id="color-overlay"></div>
-          <div class="padme">
+          <img :src="imge.urls.small" class="" />
+          <div class="overlay"></div>
+          <div class="text">
             <p class="bwme">{{ imge.user.name }}</p>
             <p class="lwme">{{ imge.user.location }}</p>
           </div>
@@ -208,6 +208,107 @@ export default class SearchForm extends Vue {
 </script>
 
 <style scoped lang="scss">
+.contain {
+  position: relative;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  pad: 10px;
+  transition: 0.5s ease;
+  background-color: black;
+}
+
+.contain .overlay {
+  opacity: 0.5;
+}
+
+.text {
+  // z-index: 1252;
+  position: absolute;
+  text-align: left !important;
+  bottom: 0 !important;
+  margin-left: 18px;
+}
+
+.masonry {
+  width: 80%;
+  margin: 1.5rem auto;
+  transition: opacity 0.25s;
+}
+
+.masonry.masonry-loading {
+  opacity: 0;
+}
+
+.masonry .item {
+  background: #333;
+  color: #fff;
+  text-align: center;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.masonry .item h3 {
+  font-size: 5em;
+  margin: 0;
+  padding: 0;
+}
+
+.masonry .item img {
+  width: 100%;
+}
+
+.main {
+  display: block;
+  max-width: 900px;
+  columns: 15rem;
+  gap: 1.3rem;
+}
+
+.main .figure {
+  margin-bottom: 1rem;
+  break-inside: avoid;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: avenir, roboto, helvetica, sans-serif;
+  margin: 2rem calc(2vw + 2rem);
+}
+
+img {
+  min-height: 280px;
+  width: 100%;
+  display: block;
+  border-radius: 0.6rem;
+}
+
+figure {
+  margin: 0;
+}
+
+figcaption {
+  padding: 0.5rem 1rem 0.4rem;
+  background: #ddd;
+  color: #333;
+  border-radius: 0.6rem;
+  text-align: end;
+}
+
 #myImg {
   border-radius: 5px;
   cursor: pointer;
@@ -250,7 +351,6 @@ export default class SearchForm extends Vue {
   background-size: cover;
   overflow: hidden;
   object-fit: cover;
-  // flex-shrink: 0;
 }
 
 /* Caption of Modal Image */
@@ -344,12 +444,6 @@ export default class SearchForm extends Vue {
   width: 100%;
   z-index: 1031;
 }
-.padme {
-  position: absolute;
-  text-align: left !important;
-  bottom: 0 !important;
-  z-index: 1030;
-}
 .lwme {
   font-size: 13px;
   color: #fff;
@@ -402,11 +496,11 @@ export default class SearchForm extends Vue {
   height: 100%;
   background-color: black;
   border-radius: 5px;
-  opacity: 0.4;
+  opacity: 0.8;
 }
 .under {
-  margin-left: 28px;
-  margin-right: 28px;
+  margin-left: 35px;
+  margin-right: 28px !important;
 }
 .myCol2 {
   text-align: left !important;
@@ -420,7 +514,6 @@ export default class SearchForm extends Vue {
   margin-left: 13px;
   margin-right: 13px;
   margin-bottom: 26px;
-  //   width: 30%;
   min-height: 300px;
   max-height: 320px;
   background: #f5f5f5;
