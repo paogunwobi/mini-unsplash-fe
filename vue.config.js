@@ -1,4 +1,5 @@
-// vue.config.js
+// vue.config.js file to be place in the root of your repository
+
 module.exports = {
-  publicPath: `/mini-unsplash-fe/`
+    publicPath: process.env.NODE_ENV === "production" ? "/mini-unsplash-fe/" : "/"
 };
