@@ -223,6 +223,7 @@ export default class SearchForm extends Vue {
   pad: 10px;
   transition: 0.5s ease;
   background-color: black;
+  border-radius: 0.6rem;
 }
 
 .contain .overlay {
@@ -235,38 +236,6 @@ export default class SearchForm extends Vue {
   text-align: left !important;
   bottom: 0 !important;
   margin-left: 18px;
-}
-
-.masonry {
-  width: 80%;
-  margin: 1.5rem auto;
-  transition: opacity 0.25s;
-}
-
-.masonry.masonry-loading {
-  opacity: 0;
-}
-
-.masonry .item {
-  background: #333;
-  color: #fff;
-  text-align: center;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.masonry .item h3 {
-  font-size: 5em;
-  margin: 0;
-  padding: 0;
-}
-
-.masonry .item img {
-  width: 100%;
 }
 
 .main {
