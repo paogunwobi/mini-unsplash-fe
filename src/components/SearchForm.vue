@@ -240,8 +240,8 @@ export default class SearchForm extends Vue {
 
 .main {
   display: block;
-  max-width: 900px;
-  columns: 15rem;
+  // max-width: 900px;
+  columns: 12rem;
   gap: 1.3rem;
 }
 
